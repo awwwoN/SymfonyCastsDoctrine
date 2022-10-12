@@ -40,13 +40,11 @@ final class VinylMixFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'title' => self::faker()->text(),
-            'trackCount' => self::faker()->randomNumber(),
-            'genre' => self::faker()->text(),
-            'votes' => self::faker()->randomNumber(),
-            'slug' => self::faker()->text(),
-            'createdAt' => null, // TODO add DATETIME ORM type manually
-            'updatedAt' => null, // TODO add DATETIME ORM type manually
+            'title' => self::faker()->words(5, true),
+            'description' => self::faker()->paragraph(),
+            'trackCount' => self::faker()->numberBetween(5, 20),
+            'genre' => self::faker()->randomElement(['pop', 'rock']),
+            'votes' => self::faker()->numberBetween(-50, 50),
         ];
     }
 
