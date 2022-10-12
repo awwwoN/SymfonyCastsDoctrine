@@ -32,6 +32,9 @@ class VinylMix
     #[ORM\Column]
     private int $votes = 0;
 
+    #[ORM\Column(length: 100, unique: true)]
+    private ?string $slug = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,5 +124,17 @@ class VinylMix
             ($this->getId() + 50) % 1000, // number between 0 and 1000, based on the id
             $width
         );
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }
